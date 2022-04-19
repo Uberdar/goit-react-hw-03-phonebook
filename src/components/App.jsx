@@ -25,10 +25,19 @@ class App extends Component {
     const newContact = { ...data, id: nanoid() };
     // console.log('добавляю ID ', newContact);
     // console.log('беру старый массив:', this.state.dataBase);
+    let test = this.state.dataBase.find(elem => {
+      if (elem.name === newContact.name && elem.number === newContact.number) {
+        alert('this contact has allready been added');
+        return true;
+      }
+    });
+    // console.log('test: ', test);
     this.setState(prevState => {
-      return {
-        dataBase: [newContact, ...prevState.dataBase],
-      };
+      if (!test) {
+        return {
+          dataBase: [newContact, ...prevState.dataBase],
+        };
+      }
     });
     // setTimeout(() => {
     //   // console.log('показываю новый массив:', this.state.dataBase);
