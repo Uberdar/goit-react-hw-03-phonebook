@@ -30,6 +30,7 @@ class App extends Component {
         alert('this contact has allready been added');
         return true;
       }
+      return false;
     });
     // console.log('test: ', test);
     this.setState(prevState => {
