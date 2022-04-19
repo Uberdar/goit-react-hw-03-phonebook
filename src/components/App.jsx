@@ -56,6 +56,20 @@ class App extends Component {
         .includes(this.state.searchValueApp.toLocaleLowerCase())
     );
   };
+  componentDidMount() {
+    console.log('App componentDidMount');
+
+    const takeLocalBD = localStorage.getItem('localDB');
+    const parseLocalBD = JSON.parse(takeLocalBD);
+
+    this.setState({ dataBase: parseLocalBD });
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
+    if (this.state.dataBase !== prevState.todos) {
+      localStorage.setItem('localDB', JSON.stringify(this.state.dataBase));
+    }
+  }
   render() {
     // console.log('searchValueApp: ', this.state.searchValueApp);
     // console.log('показываю новый массив: 42', this.state.dataBase);
