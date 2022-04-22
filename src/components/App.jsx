@@ -57,7 +57,7 @@ class App extends Component {
     );
   };
   componentDidMount() {
-    console.log('App componentDidMount');
+    // console.log('App componentDidMount');
 
     const takeLocalBD = localStorage.getItem('localDB');
     const parseLocalBD = JSON.parse(takeLocalBD);
@@ -67,7 +67,7 @@ class App extends Component {
     this.setState({ dataBase: parseLocalBD });
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate');
+    // console.log('componentDidUpdate');
     if (this.state.dataBase !== prevState.dataBase) {
       localStorage.setItem('localDB', JSON.stringify(this.state.dataBase));
     }
