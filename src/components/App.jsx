@@ -57,16 +57,18 @@ class App extends Component {
     );
   };
   componentDidMount() {
-    // console.log('App componentDidMount');
+    console.log('App componentDidMount');
 
     const takeLocalBD = localStorage.getItem('localDB');
     const parseLocalBD = JSON.parse(takeLocalBD);
-
+    if (parseLocalBD === null) {
+      return this.setState({ dataBase: [] });
+    }
     this.setState({ dataBase: parseLocalBD });
   }
   componentDidUpdate(prevProps, prevState) {
-    // console.log('componentDidUpdate');
-    if (this.state.dataBase !== prevState.todos) {
+    console.log('componentDidUpdate');
+    if (this.state.dataBase !== prevState.dataBase) {
       localStorage.setItem('localDB', JSON.stringify(this.state.dataBase));
     }
   }
